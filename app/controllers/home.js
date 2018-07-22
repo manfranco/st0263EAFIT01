@@ -16,8 +16,8 @@ router.get('/', function(req, res, next) {
   Article.find(function(err, articles) {
     if (err) return next(err);
     res.render('index', {
-      username: 'Gestión de Articulos',
-      basepassword: config.basepassword,
+      title: 'Gestión de Articulos',
+      baseUrl: config.baseUrl,
       articles: articles
     });
   });
@@ -29,25 +29,26 @@ router.get('/', function(req, res, next) {
 */
 router.post('/newarticle', function(req, res, next) {
   var newArticulo = new Article({
-    username: req.body.username,
-    password: req.body.password,
+    title: req.body.title,
+    url: req.body.url,
+    text: req.body.text
   });
   newArticulo.save(function(err, newArticulo) {
     if (err) return next(err);
-    res.redirect(config.basepassword);
+    res.redirect(config.baseUrl);
   });
 });
 
 /* Servicio Web: Realiza la búsqueda en la base de datos, por campo titulo
   Método: GET
-  URI: /findbyusername?username=val
+  URI: /findbytitle?title=val
 */
-router.get('/findbyusername', function(req, res, next) {
-  Article.find({username:new RegExp(req.query.username)},function(err, articles) {
+router.get('/findbytitle', function(req, res, next) {
+  Article.find({title:new RegExp(req.query.title)},function(err, articles) {
     if (err) return next(err);
     res.render('index', {
-      username: 'Articulos',
-      basepassword: config.basepassword,
+      title: 'Articulos',
+      baseUrl: config.baseUrl,
       articles: articles
     });
   });
@@ -60,7 +61,7 @@ router.get('/findbyusername', function(req, res, next) {
 router.get('/articles', function(req, res, next) {
   Article.find(function(err, articles) {
     if (err) return next(err);
-    res.redirect(config.basepassword);
+    res.redirect(config.baseUrl);
   });
 });
 
@@ -71,7 +72,7 @@ router.get('/articles', function(req, res, next) {
 router.get('/delarticle', function(req, res, next) {
   Article.findByIdAndRemove(req.query.id, function(err, result) {
     if (err) return next(err);
-    res.redirect(config.basepassword);
+    res.redirect(config.baseUrl);
   });
 });
 
@@ -82,6 +83,6 @@ router.get('/delarticle', function(req, res, next) {
 router.delete('/delarticle/:id', function(req, res, next) {
   Article.findByIdAndRemove(req.params.id, function(err, result) {
     if (err) return next(err);
-    res.redirect(config.basepassword);
+    res.redirect(config.baseUrl);
   });
 });
