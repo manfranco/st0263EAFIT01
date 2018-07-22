@@ -4,8 +4,7 @@
 
   <form action="<%=baseUrl%>newarticle" method="POST">
     <input type="text" placeholder="title" name="title">
-    <input type="text" placeholder="url" name="url">
-    <input type="text" placeholder="text" name="text">
+    <input type="password" placeholder="password" name="password">
     <button type="submit">CREAR</button>
   </form>
   <p>
@@ -22,10 +21,8 @@
   <ol class="articles">
     <% for(var i=0; i<articles.length; i++) {%>
       <li class="article">
-        <span>ID: <%= articles[i]._id %></span>
-        <span>TITULO: <%= articles[i].title %></span>
-        <span>URL: <%= articles[i].url %></span>
-        <span>TEXT: <%= articles[i].text %></span>
+        <span>ID: <%= articles[i]._username %></span>
+        <span>TITULO: <%= articles[i].password %></span>
       </li>
       <% } %>
   </ol>
