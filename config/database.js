@@ -1,3 +1,3 @@
 module.exports = {
-    "url":'mongodb://mongo-server/mapDb'
+    "url":'mongodb://mongo-server/Proyecto1DB'
 };

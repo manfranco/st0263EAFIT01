@@ -17,31 +17,27 @@ mongoose.connect(url,{
 });
 
 require('./config/passport')(passport);
-
 //configuraciones
 app.set('port',process.env.PORT || 3000);
 app.set('views',path.join(__dirname,'views'));
 app.set('view engine','ejs');
-
 //middlewares
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(session({
-  secret:'loremipsumdolorsitamet',
+  secret:'a new hope',
   resave:false,
   saveUninitialized:false
 }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
-
-//routse
+//rutas
 require('./routes/router.js')(app,passport);
-
-//static files
+//archivos estaticos
 app.use(express.static(path.join(__dirname,'public')));
 
 app.listen(app.get('port'), () =>{
-  console.log('Servidor on port',app.get('port'));
+  console.log('Servidor en el puerto',app.get('port'));
 });

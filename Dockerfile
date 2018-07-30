@@ -1,8 +1,8 @@
 FROM node:9.6.1
 
-LABEL version="0.5"
-LABEL description="Proyecto Mapa 1"
-LABEL maintainer="Marco Franco - mfranc18@eafit.edu.co"
+LABEL version="1.0"
+LABEL description="Proyecto1 NodeJS"
+LABEL maintainer="David Benitez - dbenite2@eafit.edu.co"
 
 ARG PORT=3000
 ENV PORT $PORT

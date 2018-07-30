@@ -6,12 +6,12 @@ module.exports = (app, passport) => {
 
   app.get('/login',(req,res) => {
     res.render('login', {
-      message: req.flash('loginMessage')
+      message: req.flash('mensajeLogin')
     });
   });
   
   app.post('/login',passport.authenticate('local-login',{
-    successRedirect:'/profile',
+    successRedirect:'/map',
     failureRedirect:'/login',
     failureFlash:true  
   })); 
@@ -20,7 +20,7 @@ module.exports = (app, passport) => {
 
   app.get('/registrar',(req,res) => {
     res.render('registrar',{
-      message: req.flash('registerMessage')
+      message: req.flash('mensajeRegistro')
     });
   });
 

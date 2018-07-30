@@ -23,7 +23,7 @@ module.exports = function(passport){
         User.findOne({'local.email':email},function(err,user){
             if(err){return done(err);}
             if(user){
-                return done(null,false,req.flash('registerMessage','El correo ya se encuentra registrado'));
+                return done(null,false,req.flash('mensajeRegistro','El correo ya se encuentra registrado'));
             } else {
                 var newUser = new User();
                 newUser.local.email = email;
@@ -47,10 +47,10 @@ module.exports = function(passport){
         User.findOne({'local.email':email},function(err,user){
             if(err){return done(err);}
             if(!user){
-                return done(null,false,req.flash('loginMessage','User does not exist'));
+                return done(null,false,req.flash('mensajeLogin','El usuario no existe'));
             }
             if(!user.validPassword(password)) {
-                return done(null,false,req.flash('loginMessage','Please check your password'));
+                return done(null,false,req.flash('mensajeLogin','Contraseña incorrecta'));
             }
             return done(null,user);
         })
