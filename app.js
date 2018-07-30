@@ -17,7 +17,7 @@ mongoose.connect(url,{
 });
 
 require('./config/passport')(passport);
-//configuraciones
+//settings
 app.set('port',process.env.PORT || 3000);
 app.set('views',path.join(__dirname,'views'));
 app.set('view engine','ejs');
@@ -26,18 +26,18 @@ app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(session({
-  secret:'a new hope',
+  secret:'thisisamerica',
   resave:false,
   saveUninitialized:false
 }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
-//rutas
+//routes
 require('./routes/router.js')(app,passport);
-//archivos estaticos
+//static files
 app.use(express.static(path.join(__dirname,'public')));
 
 app.listen(app.get('port'), () =>{
-  console.log('Servidor en el puerto',app.get('port'));
+  console.log('Server on port',app.get('port'));
 });
