@@ -1,9 +1,9 @@
 {
-  "name": "proyecto1",
+  "name": "st026eafit",
   "version": "1.0.0",
   "main": "app.js",
   "repository": "https://github.com/DDCSLearning/authenticationIntro.git",
-  "author": "David Benitez",
+  "author": "Marco Franco",
   "license": "none",
   "scripts": {
     "start": "node app",
